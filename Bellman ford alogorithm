@@ -1,0 +1,38 @@
+#include<stdio.h>
+#define INF 9999
+#define MAX 10
+int main(){
+	int n,i,j,k;
+	int dist[MAX][MAX];
+	printf("enter number of vertices:");
+	scanf("%d",&n);
+	printf("\n enter the adjacency matrix:\n");
+	printf("\n enter %d for INF if there is no direct edge)\n\n",INF);
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			printf("Enter value for [%d][%d]:",i+1,j+1);
+			scanf("%d",&dist[i][j]);
+		}
+		printf("\n");
+	}
+	for(k=0;k<n;k++){
+		for(i=0;i<n;i++){
+			for(j=0;j<n;j++){
+				if(dist[i][j]>dist[i][k]+dist[k][j]){
+					dist[i][j]=dist[i][k]+dist[k][j];
+				}
+			}
+		}
+	}
+	printf("\nShortest Path Matrix:\n\n");
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			if(dist[i][j]==INF)
+			printf("INF\t");
+			else
+			printf("%d\t",dist[i][j]);
+		}
+		printf("\n");
+		}
+		return 0;
+	}
